@@ -38,7 +38,7 @@ public final class JwtUtil {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername());
+        return createToken(claims, userDetails.username());
     }
 
     private String createToken(Map<String, Object> claims, String subject) {
@@ -53,6 +53,6 @@ public final class JwtUtil {
 
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
-        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+        return username.equals(userDetails.username()) && !isTokenExpired(token);
     }
 }
